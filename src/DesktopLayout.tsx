@@ -1,6 +1,7 @@
-import DesktopHeader from "./DesktopHeader.tsx";
+import DesktopHeader from "./DesktopHeader";
 import { ReactNode } from "react";
 import { styled } from "@mui/material";
+import Page from "./Page";
 
 interface DesktopLayoutProps {
   toggleTheme: () => void;
@@ -15,7 +16,7 @@ const DesktopLayout = ({ toggleTheme, children }: DesktopLayoutProps) => {
   return (
     <PageContainer>
       <DesktopHeader toggleTheme={toggleTheme} />
-      {children}
+      <Page>{children}</Page>
     </PageContainer>
   );
 };

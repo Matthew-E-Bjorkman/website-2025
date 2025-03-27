@@ -1,25 +1,44 @@
-import { useState } from "react";
-import { ThemeContext } from "./ThemeContext";
+import { useEffect, useState } from "react";
 import AppLayout from "./AppLayout";
 import HomePage from "./HomePage";
+import AboutPage from "./AboutPage";
+import SkillsPage from "./SkillsPage";
+import ProjectsPage from "./ProjectsPage";
+import ContactPage from "./ContactPage";
+import { BrowserRouter, Routes, Route } from "react-router";
+import { ThemeProvider } from "@mui/material";
+import { useAppThemes } from "./useAppThemes.ts";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [themeName, setThemeName] = useState("light");
+  const { lightTheme, darkTheme } = useAppThemes();
+  const [theme, setTheme] = useState(lightTheme);
 
-  function toggleTheme() {
-    if (theme === "light") {
-      setTheme("dark");
+  useEffect(() => {
+    if (themeName === "dark") {
+      setTheme(darkTheme);
     } else {
-      setTheme("light");
+      setTheme(lightTheme);
     }
-  }
+  }, [themeName]);
+
+  const toggleTheme = () =>
+    setThemeName(themeName === "light" ? "dark" : "light");
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <AppLayout toggleTheme={toggleTheme}>
-        <HomePage />
-      </AppLayout>
-    </ThemeContext.Provider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <AppLayout toggleTheme={toggleTheme}>
+          <Routes>
+            <Route index element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/skills" element={<SkillsPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </AppLayout>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

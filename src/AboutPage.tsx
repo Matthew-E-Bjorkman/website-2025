@@ -9,14 +9,14 @@ const CenteredDiv = styled("div")(({ theme }) => ({
   color: theme.textPrimary,
 }));
 
-const HomePage = () => {
+const AboutPage = () => {
   const theme = useTheme();
 
   return (
-    <CenteredDiv style={{ background: theme.background1 }}>
-      Home Page
+    <CenteredDiv style={{ background: theme.background2 }}>
+      About Page
     </CenteredDiv>
   );
 };
 
-export default HomePage;
+export default AboutPage;
