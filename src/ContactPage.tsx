@@ -1,13 +1,5 @@
-import { styled, useTheme } from "@mui/material";
-
-const CenteredDiv = styled("div")(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "100%",
-  fontSize: "150px",
-  color: theme.textPrimary,
-}));
+import { useTheme } from "@mui/material";
+import CenteredDiv from "./CenteredDiv";
 
 const ContactPage = () => {
   const theme = useTheme();

@@ -1,0 +1,86 @@
+{
+  "projects": [
+    {
+      "name": "InvenSync",
+      "source_links": [
+        {
+          "url":"https://github.com/Matthew-E-Bjorkman/WireOps.Business",
+          "name": "Back-end"
+        },
+        {
+          "url":"https://github.com/Matthew-E-Bjorkman/WireOps.UI",
+          "name": "Front-end"
+        }
+      ],
+      "live_link": "",
+      "img_name": "InvenSync.png",
+      "year": "2024-25",
+      "description": "A SaaS boilerplate solution built on top of Auth0 and Stripe Billing for Identity and Revenue respectively. Allows for the creation of organizations that can invite users and share organizational data in-app between them. Business logic can be implemented as a separate back-end service and incorporated in the front-end, similarly to \"items\" that is used as an example.",
+      "technologies": [
+        ".NET Core",
+        "C#",
+        "React",
+        "TypeScript",
+        "Postgres",
+        "Docker"
+      ]
+    },
+    {
+      "name": "Chained Habit Tracker",
+      "source_links": [
+        {
+          "url":"https://github.com/Matthew-E-Bjorkman/HabitTrackerApp",
+          "name": "Source"
+        }
+      ],
+      "live_link": "",
+      "img_name": "ChainedHabitTracker.jpg",
+      "year": "2023",
+      "description": "A fully functional habit tracking app with the ability to schedule specific time intervals, view historical data trends, set reminder notifications, and export data. Completed in Angular+Ionic as a PWA capable of running on both Android and Apple devices.",
+      "technologies": [
+        "Angular",
+        "Ionic",
+        "TypeScript"
+      ]
+    },
+    {
+      "name": "Personal Website",
+      "source_links": [
+        {
+          "url":"https://github.com/Matthew-E-Bjorkman/MatthewBjorkman_Website",
+          "name": "Source"
+        }
+      ],
+      "live_link": "",
+      "img_name": "PersonalWebsite2023.png",
+      "year": "2023",
+      "description": "The initial version of my personal website. A basic portfolio-style site built with Angular 15. My first personal project for bootstrapping a front-end framework in effort to solidify my understanding from working with it in my professional role.",
+      "technologies": [
+        "Angular",
+        "TypeScript",
+        "Bootstrap"
+      ]
+    },
+    {
+      "name": "Game Jam Competitions",
+      "source_links": [
+        {
+          "url":"https://github.com/Matthew-E-Bjorkman/2020_GameJam",
+          "name": "2020"
+        },
+        {
+          "url":"https://github.com/Matthew-E-Bjorkman/2019_GameJam",
+          "name": "2019"
+        }
+      ],
+      "live_link": "",
+      "img_name": "GameJamCompetitions.png",
+      "year": "2019-20",
+      "description": "Games I developed in 72 hour game jams. Still being in college at the time, these served as great opportunities to gain practical experience with my programming knowledge, as well as work in a team environment with non-technical team members (artists and musicians).",
+      "technologies": [
+        "Unity",
+        "C#"
+      ]
+    }
+  ]
+}

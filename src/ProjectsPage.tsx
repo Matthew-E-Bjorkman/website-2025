@@ -1,20 +1,21 @@
-import { styled, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
+import CenteredDiv from "./CenteredDiv";
+import ProjectCard from "./ProjectCard";
+import CardCarousel from "./CardCarousel";
+import { Project } from "./types/Project";
 
-const CenteredDiv = styled("div")(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "100%",
-  fontSize: "150px",
-  color: theme.textPrimary,
-}));
+import projectsJSON from "./data/Projects.json";
 
 const ProjectsPage = () => {
   const theme = useTheme();
+  const projects: Project[] = projectsJSON.projects;
+  const projectCards = projects.map((project) => (
+    <ProjectCard project={project} key={project.name} />
+  ));
 
   return (
     <CenteredDiv style={{ background: theme.background4 }}>
-      Projects Page
+      <CardCarousel cards={projectCards} />
     </CenteredDiv>
   );
 };
