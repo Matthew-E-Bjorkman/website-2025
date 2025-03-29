@@ -109,7 +109,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         >
           <CardMedia
             component="img"
-            src={"/src/images/" + project.img_name}
+            src={"/" + project.img_name}
             alt={project.name + " image"}
             sx={{
               textAlign: "center",
