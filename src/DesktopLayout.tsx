@@ -4,7 +4,6 @@ import { styled } from "@mui/material";
 import Page from "./Page";
 
 interface DesktopLayoutProps {
-  toggleTheme: () => void;
   children: ReactNode;
 }
 
@@ -12,10 +11,10 @@ const PageContainer = styled("div")({
   height: "calc(100vh - 10px)",
 });
 
-const DesktopLayout = ({ toggleTheme, children }: DesktopLayoutProps) => {
+const DesktopLayout = ({ children }: DesktopLayoutProps) => {
   return (
     <PageContainer>
-      <DesktopHeader toggleTheme={toggleTheme} />
+      <DesktopHeader />
       <Page>{children}</Page>
     </PageContainer>
   );

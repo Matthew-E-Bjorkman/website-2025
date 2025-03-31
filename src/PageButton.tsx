@@ -1,4 +1,4 @@
-import { IconButton, styled, useTheme } from "@mui/material";
+import { IconButton, styled } from "@mui/material";
 import { Link } from "react-router";
 
 export interface PageButtonProps {
@@ -8,15 +8,16 @@ export interface PageButtonProps {
   setActivePage: (activePage: string) => void;
 }
 
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
+const StyledIconButton = styled(IconButton)({
   height: "100%",
   border: "3px solid",
   borderRadius: "8px",
   borderBottom: "3px solid",
-  borderColor: theme.border,
+  borderColor: "var(--border)",
   borderBottomLeftRadius: "0",
   borderBottomRightRadius: "0",
-}));
+  color: "var(--text-primary)",
+});
 
 const StyledLink = styled(Link)({
   textDecoration: "none",
@@ -32,8 +33,6 @@ const PageButton = ({
   pageColor,
   setActivePage,
 }: PageButtonProps) => {
-  const theme = useTheme();
-
   return (
     <StyledLink
       to={pageName === "about" ? "/" : "/" + pageName}
@@ -41,7 +40,8 @@ const PageButton = ({
     >
       <StyledIconButton
         style={{
-          borderBottomColor: activePage == pageName ? pageColor : theme.border,
+          borderBottomColor:
+            activePage == pageName ? pageColor : "var(--border)",
           backgroundColor: pageColor,
         }}
       >

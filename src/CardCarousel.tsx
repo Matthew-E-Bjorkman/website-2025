@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { Circle } from "@mui/icons-material";
 
 interface CardCarouselProps {
@@ -7,7 +7,6 @@ interface CardCarouselProps {
 }
 
 const CardCarousel = ({ cards }: CardCarouselProps) => {
-  const theme = useTheme();
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const isScrolling = useRef(false);
@@ -129,8 +128,8 @@ const CardCarousel = ({ cards }: CardCarouselProps) => {
                 fontSize: "0.75rem",
                 color:
                   activeIndex === index
-                    ? theme.textPrimary
-                    : theme.headerBackground,
+                    ? "var(--text-primary)"
+                    : "var(--header-background)",
                 transition: "color 0.3s ease",
                 filter: "drop-shadow(0 2px 2px rgba(0,0,0,0.2))",
               }}

@@ -5,7 +5,6 @@ import {
   ToggleButton,
   Toolbar,
   Tooltip,
-  useTheme,
 } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -14,18 +13,15 @@ import PageButton from "./PageButton.tsx";
 import { Download, GitHub, LinkedIn } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import { useAppThemes } from "./useAppThemes.ts";
 
-interface HeaderProps {
-  toggleTheme: () => void;
-}
-
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
+const StyledAppBar = styled(AppBar)({
   borderBottom: "3px solid",
-  borderColor: theme.border,
+  borderColor: "var(--border)",
   height: "73px !important",
-  background: theme.headerBackground,
+  background: "var(--header-background)",
   position: "static",
-}));
+});
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -41,34 +37,35 @@ const StyledBox = styled(Box)({
   padding: "8px 450px 2px 450px",
 });
 
-const StyledButton = styled(Button)(({ theme }) => ({
+const StyledButton = styled(Button)({
   minWidth: "52px",
   border: "3px solid",
-  borderColor: theme.border,
+  borderColor: "var(--border)",
   borderRadius: "10px",
   padding: "11px",
-}));
+});
 
-const StyledDownload = styled(Download)(({ theme }) => ({
-  color: theme.border,
-}));
+const StyledDownload = styled(Download)({
+  color: "var(--border)",
+});
 
-const StyledGitHub = styled(GitHub)(({ theme }) => ({
-  color: theme.border,
-}));
+const StyledGitHub = styled(GitHub)({
+  color: "var(--border)",
+});
 
-const StyledLinkedIn = styled(LinkedIn)(({ theme }) => ({
-  color: theme.border,
-}));
+const StyledLinkedIn = styled(LinkedIn)({
+  color: "var(--border)",
+});
 
-const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
+const StyledToggleButton = styled(ToggleButton)({
   border: "3px solid",
-  borderColor: theme.border,
+  borderColor: "var(--border)",
   borderRadius: "150px",
-}));
+  color: "var(--border)",
+});
 
-const DesktopHeader = ({ toggleTheme }: HeaderProps) => {
-  const theme = useTheme();
+const DesktopHeader = () => {
+  const { themeName, toggleTheme } = useAppThemes();
   const [activeTab, setActiveTab] = useState("home");
 
   const setPage = (pageName: string) => {
@@ -76,10 +73,10 @@ const DesktopHeader = ({ toggleTheme }: HeaderProps) => {
   };
 
   const pages = [
-    { name: "about", color: theme.background1 },
-    { name: "skills", color: theme.background3 },
-    { name: "projects", color: theme.background4 },
-    { name: "contact", color: theme.background5 },
+    { name: "about", color: "var(--background1)" },
+    { name: "skills", color: "var(--background3)" },
+    { name: "projects", color: "var(--background4)" },
+    { name: "contact", color: "var(--background5)" },
   ];
 
   return (
@@ -128,11 +125,8 @@ const DesktopHeader = ({ toggleTheme }: HeaderProps) => {
             </a>
           </Tooltip>
           <Tooltip title="Change Theme">
-            <StyledToggleButton
-              value={theme.name}
-              onClick={() => toggleTheme()}
-            >
-              {theme.name === "light" ? <LightModeIcon /> : <DarkModeIcon />}
+            <StyledToggleButton value={themeName} onClick={() => toggleTheme()}>
+              {themeName === "light" ? <LightModeIcon /> : <DarkModeIcon />}
             </StyledToggleButton>
           </Tooltip>
         </Stack>

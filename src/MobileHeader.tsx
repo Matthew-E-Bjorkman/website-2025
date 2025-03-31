@@ -9,15 +9,10 @@ import {
 } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import { ThemeContext } from "./ThemeContext";
-import { useContext } from "react";
+import { useAppThemes } from "./useAppThemes.ts";
 
-interface HeaderProps {
-  toggleTheme: () => void;
-}
-
-const MobileHeader = ({ toggleTheme }: HeaderProps) => {
-  const theme: string = useContext(ThemeContext);
+const MobileHeader = () => {
+  const { themeName, toggleTheme } = useAppThemes();
 
   return (
     <AppBar position="static">
@@ -29,12 +24,12 @@ const MobileHeader = ({ toggleTheme }: HeaderProps) => {
           <IconButton>Contact</IconButton>
         </Box>
         <Icon />
-        <ToggleButton value={theme} onClick={() => toggleTheme()}>
+        <ToggleButton value={themeName} onClick={() => toggleTheme()}>
           <LightModeIcon
-            sx={{ display: theme === "light" ? "inline" : "none" }}
+            sx={{ display: themeName === "light" ? "inline" : "none" }}
           />
           <DarkModeIcon
-            sx={{ display: theme === "dark" ? "inline" : "none" }}
+            sx={{ display: themeName === "dark" ? "inline" : "none" }}
           />
         </ToggleButton>
       </Toolbar>

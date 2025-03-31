@@ -1,0 +1,50 @@
+:root {
+    /* Default light theme values */
+    --background1: #B3EBF2;
+    --background2: #dc8add;
+    --background3: #f9f06b;
+    --background4: #ea707d;
+    --background5: #4377f1;
+    --header-background: #f6eee3;
+    --text-primary: #121212;
+    --border: #716D68;
+}
+
+body.dark-theme {
+    --background1: #121212;
+    --background2: #121212;
+    --background3: #121212;
+    --background4: #121212;
+    --background5: #121212;
+    --header-background: #3f3f3f;
+    --text-primary: #ffffff;
+    --border: #ffffff;
+}
+
+/* Apply transitions to all elements */
+*, *::before, *::after {
+    transition: background 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Extend transitions to MUI specific elements */
+.MuiCard-root,
+.MuiCardContent-root,
+.MuiCardActions-root,
+.MuiTypography-root,
+.MuiGrid-root,
+.MuiStack-root,
+.MuiDivider-root,
+.MuiAppBar-root,
+.MuiToolbar-root,
+.MuiButton-root,
+.MuiIconButton-root,
+.MuiToggleButton-root,
+.MuiSvgIcon-root {
+    transition: background 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease !important;
+}

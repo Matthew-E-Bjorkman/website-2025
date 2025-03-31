@@ -3,11 +3,10 @@ import DesktopLayout from "./DesktopLayout";
 import MobileLayout from "./MobileLayout";
 
 interface LayoutProps {
-  toggleTheme: () => void;
   children: ReactNode;
 }
 
-const AppLayout = ({ toggleTheme, children }: LayoutProps) => {
+const AppLayout = ({ children }: LayoutProps) => {
   const [isMobileSize, setIsMobileSize] = useState(false);
 
   function handleResize() {
@@ -28,12 +27,8 @@ const AppLayout = ({ toggleTheme, children }: LayoutProps) => {
 
   return (
     <>
-      {isMobileSize && (
-        <MobileLayout toggleTheme={toggleTheme}>{children}</MobileLayout>
-      )}
-      {!isMobileSize && (
-        <DesktopLayout toggleTheme={toggleTheme}>{children}</DesktopLayout>
-      )}
+      {isMobileSize && <MobileLayout>{children}</MobileLayout>}
+      {!isMobileSize && <DesktopLayout>{children}</DesktopLayout>}
     </>
   );
 };

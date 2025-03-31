@@ -3,7 +3,6 @@ import MobileHeader from "./MobileHeader";
 import { styled } from "@mui/material";
 
 interface MobileLayoutProps {
-  toggleTheme: () => void;
   children: ReactNode;
 }
 
@@ -11,10 +10,10 @@ const PageContainer = styled("div")({
   height: "100vh",
 });
 
-const MobileLayout = ({ toggleTheme, children }: MobileLayoutProps) => {
+const MobileLayout = ({ children }: MobileLayoutProps) => {
   return (
     <PageContainer>
-      <MobileHeader toggleTheme={toggleTheme} />
+      <MobileHeader />
       {children}
     </PageContainer>
   );
