@@ -118,7 +118,7 @@ const DesktopHeader = () => {
             </StyledButton>
           </Tooltip>
           <Tooltip title="Download Resume">
-            <a href="../public/Resume.pdf" download="MatthewBjorkmanResume.pdf">
+            <a href="/Resume.pdf" download="MatthewBjorkmanResume.pdf">
               <StyledButton>
                 <StyledDownload />
               </StyledButton>
