@@ -5,7 +5,7 @@ const AboutPage = () => {
   const theme = useTheme();
 
   return (
-    <CenteredDiv style={{ background: theme.background2 }}>
+    <CenteredDiv style={{ background: theme.background1 }}>
       About Page
     </CenteredDiv>
   );

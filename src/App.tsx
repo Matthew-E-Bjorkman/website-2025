@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import AppLayout from "./AppLayout";
-import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import SkillsPage from "./SkillsPage";
 import ProjectsPage from "./ProjectsPage";
@@ -30,8 +29,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <AppLayout toggleTheme={toggleTheme}>
           <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
+            <Route index element={<AboutPage />} />
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/contact" element={<ContactPage />} />

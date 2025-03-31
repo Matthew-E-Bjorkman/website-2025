@@ -1,16 +1,19 @@
 import {
   AppBar,
   Box,
-  IconButton,
   styled,
   ToggleButton,
   Toolbar,
+  Tooltip,
   useTheme,
 } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import { Link } from "react-router";
 import { useState } from "react";
+import PageButton from "./PageButton.tsx";
+import { Download, GitHub, LinkedIn } from "@mui/icons-material";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 interface HeaderProps {
   toggleTheme: () => void;
@@ -20,6 +23,8 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   borderBottom: "3px solid",
   borderColor: theme.border,
   height: "73px !important",
+  background: theme.headerBackground,
+  position: "static",
 }));
 
 const StyledToolbar = styled(Toolbar)({
@@ -33,62 +38,27 @@ const StyledBox = styled(Box)({
   justifyContent: "space-between",
   width: "100%",
   height: "100%",
-  padding: "8px 400px 2px 400px",
+  padding: "8px 450px 2px 450px",
 });
 
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  height: "100%",
+const StyledButton = styled(Button)(({ theme }) => ({
+  minWidth: "52px",
   border: "3px solid",
-  borderRadius: "8px",
-  borderBottom: "3px solid",
   borderColor: theme.border,
-  borderBottomLeftRadius: "0",
-  borderBottomRightRadius: "0",
+  borderRadius: "10px",
+  padding: "11px",
 }));
 
-const HomePageButton = styled(StyledIconButton)(({ theme }) => ({
-  borderBottomColor: theme.background1,
-  backgroundColor: theme.background1,
-  ":hover": {
-    backgroundColor: theme.background1,
-    filter: "brightness(90%)",
-  },
+const StyledDownload = styled(Download)(({ theme }) => ({
+  color: theme.border,
 }));
 
-const AboutPageButton = styled(StyledIconButton)(({ theme }) => ({
-  borderBottomColor: theme.background2,
-  backgroundColor: theme.background2,
-  ":hover": {
-    backgroundColor: theme.background2,
-    filter: "brightness(90%)",
-  },
+const StyledGitHub = styled(GitHub)(({ theme }) => ({
+  color: theme.border,
 }));
 
-const SkillsPageButton = styled(StyledIconButton)(({ theme }) => ({
-  borderBottomColor: theme.background3,
-  backgroundColor: theme.background3,
-  ":hover": {
-    backgroundColor: theme.background3,
-    filter: "brightness(90%)",
-  },
-}));
-
-const ProjectsPageButton = styled(StyledIconButton)(({ theme }) => ({
-  borderBottomColor: theme.background4,
-  backgroundColor: theme.background4,
-  ":hover": {
-    backgroundColor: theme.background4,
-    filter: "brightness(90%)",
-  },
-}));
-
-const ContactPageButton = styled(StyledIconButton)(({ theme }) => ({
-  borderBottomColor: theme.background5,
-  backgroundColor: theme.background5,
-  ":hover": {
-    backgroundColor: theme.background5,
-    filter: "brightness(90%)",
-  },
+const StyledLinkedIn = styled(LinkedIn)(({ theme }) => ({
+  color: theme.border,
 }));
 
 const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
@@ -97,76 +67,75 @@ const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   borderRadius: "150px",
 }));
 
-const StyledLink = styled(Link)({
-  textDecoration: "none",
-  color: "inherit",
-});
-
 const DesktopHeader = ({ toggleTheme }: HeaderProps) => {
   const theme = useTheme();
   const [activeTab, setActiveTab] = useState("home");
 
+  const setPage = (pageName: string) => {
+    setActiveTab(pageName);
+  };
+
+  const pages = [
+    { name: "about", color: theme.background1 },
+    { name: "skills", color: theme.background3 },
+    { name: "projects", color: theme.background4 },
+    { name: "contact", color: theme.background5 },
+  ];
+
   return (
-    <StyledAppBar
-      style={{ background: theme.headerBackground }}
-      position="static"
-    >
+    <StyledAppBar>
       <StyledToolbar>
         <StyledBox>
-          <StyledLink to="/" onClick={() => setActiveTab("home")}>
-            <HomePageButton
-              style={{
-                borderBottom:
-                  activeTab == "home" ? "" : "3px solid" + theme.border,
-              }}
-            >
-              Home
-            </HomePageButton>
-          </StyledLink>
-          <StyledLink to="/about" onClick={() => setActiveTab("about")}>
-            <AboutPageButton
-              style={{
-                borderBottom:
-                  activeTab == "about" ? "" : "3px solid" + theme.border,
-              }}
-            >
-              About
-            </AboutPageButton>
-          </StyledLink>
-          <StyledLink to="/skills" onClick={() => setActiveTab("skills")}>
-            <SkillsPageButton
-              style={{
-                borderBottom:
-                  activeTab == "skills" ? "" : "3px solid" + theme.border,
-              }}
-            >
-              Skills
-            </SkillsPageButton>
-          </StyledLink>
-          <StyledLink to="/projects" onClick={() => setActiveTab("projects")}>
-            <ProjectsPageButton
-              style={{
-                borderBottom:
-                  activeTab == "projects" ? "" : "3px solid" + theme.border,
-              }}
-            >
-              Projects
-            </ProjectsPageButton>
-          </StyledLink>
-          <StyledLink to="/contact" onClick={() => setActiveTab("contact")}>
-            <ContactPageButton
-              style={{
-                borderBottom:
-                  activeTab == "contact" ? "" : "3px solid" + theme.border,
-              }}
-            >
-              Contact
-            </ContactPageButton>
-          </StyledLink>
+          {pages.map((page) => (
+            <PageButton
+              pageName={page.name}
+              pageColor={page.color}
+              activePage={activeTab}
+              setActivePage={setPage}
+            />
+          ))}
         </StyledBox>
-        <StyledToggleButton value={theme.name} onClick={() => toggleTheme()}>
-          {theme.name === "light" ? <LightModeIcon /> : <DarkModeIcon />}
-        </StyledToggleButton>
+        <Stack direction="row" spacing={2} position="fixed">
+          <Tooltip title="LinkedIn">
+            <StyledButton
+              onClick={() =>
+                window.open(
+                  "https://www.linkedin.com/in/matthewbjorkman/",
+                  "LinkedIn",
+                )
+              }
+            >
+              <StyledLinkedIn />
+            </StyledButton>
+          </Tooltip>
+          <Tooltip title="GitHub">
+            <StyledButton
+              onClick={() =>
+                window.open(
+                  "https://github.com/Matthew-E-Bjorkman",
+                  "GitHubWindow",
+                )
+              }
+            >
+              <StyledGitHub />
+            </StyledButton>
+          </Tooltip>
+          <Tooltip title="Download Resume">
+            <a href="../public/Resume.pdf" download="MatthewBjorkmanResume.pdf">
+              <StyledButton>
+                <StyledDownload />
+              </StyledButton>
+            </a>
+          </Tooltip>
+          <Tooltip title="Change Theme">
+            <StyledToggleButton
+              value={theme.name}
+              onClick={() => toggleTheme()}
+            >
+              {theme.name === "light" ? <LightModeIcon /> : <DarkModeIcon />}
+            </StyledToggleButton>
+          </Tooltip>
+        </Stack>
       </StyledToolbar>
     </StyledAppBar>
   );
