@@ -10,6 +10,9 @@ export interface PageButtonProps {
 
 const StyledIconButton = styled(IconButton)({
   height: "100%",
+  minWidth: "50px",
+  width: "16vw",
+  maxWidth: "300px",
   border: "3px solid",
   borderRadius: "8px",
   borderBottom: "3px solid",

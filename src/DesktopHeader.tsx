@@ -10,7 +10,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useState } from "react";
 import PageButton from "./PageButton.tsx";
-import { Download, GitHub, LinkedIn } from "@mui/icons-material";
+import { Download, Email, GitHub, LinkedIn } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { useAppThemes } from "./useAppThemes.ts";
@@ -34,7 +34,7 @@ const StyledBox = styled(Box)({
   justifyContent: "space-between",
   width: "100%",
   height: "100%",
-  padding: "8px 450px 2px 450px",
+  padding: "8px 7vw 2px 7vw",
 });
 
 const StyledButton = styled(Button)({
@@ -43,6 +43,10 @@ const StyledButton = styled(Button)({
   borderColor: "var(--border)",
   borderRadius: "10px",
   padding: "11px",
+});
+
+const StyledEmail = styled(Email)({
+  color: "var(--border)",
 });
 
 const StyledDownload = styled(Download)({
@@ -66,7 +70,7 @@ const StyledToggleButton = styled(ToggleButton)({
 
 const DesktopHeader = () => {
   const { themeName, toggleTheme } = useAppThemes();
-  const [activeTab, setActiveTab] = useState("home");
+  const [activeTab, setActiveTab] = useState("about");
 
   const setPage = (pageName: string) => {
     setActiveTab(pageName);
@@ -76,7 +80,6 @@ const DesktopHeader = () => {
     { name: "about", color: "var(--background1)" },
     { name: "skills", color: "var(--background3)" },
     { name: "projects", color: "var(--background4)" },
-    { name: "contact", color: "var(--background5)" },
   ];
 
   return (
@@ -92,7 +95,14 @@ const DesktopHeader = () => {
             />
           ))}
         </StyledBox>
-        <Stack direction="row" spacing={2} position="fixed">
+        <Stack direction="row" spacing={2}>
+          <Tooltip title="Contact Me">
+            <a href="mailto:business@matthewbjorkman.com">
+              <StyledButton>
+                <StyledEmail />
+              </StyledButton>
+            </a>
+          </Tooltip>
           <Tooltip title="LinkedIn">
             <StyledButton
               onClick={() =>

@@ -19,7 +19,7 @@ const StyledCard = styled(Card)({
   borderRadius: "20px",
   border: "3px solid var(--border)",
   width: "80%",
-  height: "70%",
+  height: "80%",
 });
 
 const CardContentNoVerticalPadding = styled(CardContent)({

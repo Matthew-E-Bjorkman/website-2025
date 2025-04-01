@@ -29,7 +29,7 @@ body.dark-theme {
     border-color 0.3s ease;
 }
 
-/* Extend transitions to MUI specific elements */
+/* Extend font and transitions to MUI specific elements */
 .MuiCard-root,
 .MuiCardContent-root,
 .MuiCardActions-root,
@@ -43,6 +43,9 @@ body.dark-theme {
 .MuiIconButton-root,
 .MuiToggleButton-root,
 .MuiSvgIcon-root {
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 500 !important;
+
     transition: background 0.3s ease,
     background-color 0.3s ease,
     color 0.3s ease,
