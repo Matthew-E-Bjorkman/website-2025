@@ -10,7 +10,7 @@ const ContainerCard = styled(Card)({
   height: "80%",
   borderRadius: "20px",
   border: "3px solid var(--border)",
-  background: "var(--background3)",
+  background: "var(--background2)",
 });
 
 const PageCardContent = styled(CardContent)({

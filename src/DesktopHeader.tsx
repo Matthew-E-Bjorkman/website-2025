@@ -78,8 +78,8 @@ const DesktopHeader = () => {
 
   const pages = [
     { name: "about", color: "var(--background1)" },
-    { name: "skills", color: "var(--background3)" },
-    { name: "projects", color: "var(--background4)" },
+    { name: "skills", color: "var(--background2)" },
+    { name: "projects", color: "var(--background3)" },
   ];
 
   return (

@@ -1,10 +1,8 @@
 :root {
     /* Default light theme values */
     --background1: #B3EBF2;
-    --background2: #dc8add;
-    --background3: #f9f06b;
-    --background4: #ea707d;
-    --background5: #4377f1;
+    --background2: #f9f06b;
+    --background3: #ea707d;
     --header-background: #f6eee3;
     --text-primary: #121212;
     --border: #716D68;
@@ -12,10 +10,8 @@
 
 body.dark-theme {
     --background1: #004c55;
-    --background2: #660067;
-    --background3: #605b00;
-    --background4: #5a0007;
-    --background5: #001d5e;
+    --background2: #605b00;
+    --background3: #5a0007;
     --header-background: #3f3f3f;
     --text-primary: #b1b1b1;
     --border: #b1b1b1;

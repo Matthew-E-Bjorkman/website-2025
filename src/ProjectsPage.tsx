@@ -12,7 +12,7 @@ const ProjectsPage = () => {
   ));
 
   return (
-    <CenteredDiv style={{ background: "var(--background4)" }}>
+    <CenteredDiv style={{ background: "var(--background3)" }}>
       <CardCarousel cards={projectCards} />
     </CenteredDiv>
   );

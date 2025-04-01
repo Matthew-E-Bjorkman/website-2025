@@ -1,0 +1,56 @@
+{
+  "skills": [
+    { "name": ".NET Core", "icon": "dotnetcore.svg", "category": "Featured" },
+    { "name": "C#", "icon": "csharp.svg", "category": "Featured" },
+    { "name": "React", "icon": "react.svg", "category": "Featured" },
+    { "name": "TypeScript", "icon": "typescript.svg", "category": "Featured" },
+
+    { "name": "HTML", "icon": "html.svg", "category": "Front-end" },
+    { "name": "CSS", "icon": "css.svg", "category": "Front-end" },
+    { "name": "JavaScript", "icon": "javascript.svg", "category": "Front-end" },
+    { "name": "less", "icon": "less.svg", "category": "Front-end" },
+    { "name": "Angular", "icon": "angular.svg", "category": "Front-end" },
+    { "name": "Bootstrap", "icon": "bootstrap.svg", "category": "Front-end" },
+    { "name": "Material UI", "icon": "mui.svg", "category": "Front-end" },
+    { "name": "Telerik", "icon": "telerik.svg", "category": "Front-end" },
+
+    { "name": "Ionic", "icon": "ionic.svg", "category": "Mobile" },
+
+    { "name": ".NET Framework", "icon": "dotnetframework.svg", "category": "Back-end" },
+    { "name": "Kafka", "icon": "kafka.svg", "category": "Back-end" },
+    { "name": "GraphQL", "icon": "graphql.svg", "category": "Back-end" },
+
+    { "name": "Entity Framework", "icon": "entityframework.svg", "category": "Object-Relational Mappers" },
+    { "name": "Dapper", "icon": "dapper.svg", "category": "Object-Relational Mappers" },
+
+    { "name": "SQL Server", "icon": "sqlserver.svg", "category": "Persistence" },
+    { "name": "PostgreSQL", "icon": "postgresql.svg", "category": "Persistence" },
+    { "name": "MongoDB", "icon": "mongodb.svg", "category": "Persistence" },
+
+    { "name": "Domain-Driven Design", "icon": "ddd.svg", "category": "Architecture" },
+    { "name": "Event-Driven Architecture", "icon": "eventdriven.svg", "category": "Architecture" },
+    { "name": "CQRS", "icon": "cqrs.svg", "category": "Architecture" },
+    { "name": "Microservices", "icon": "microservices.svg", "category": "Architecture" },
+    { "name": "RESTful", "icon": "restful.svg", "category": "Architecture" },
+
+
+    { "name": "AWS ECS", "icon": "aws.svg", "category": "Cloud" },
+    { "name": "AWS EC2", "icon": "aws.svg", "category": "Cloud" },
+    { "name": "AWS RDS", "icon": "aws.svg", "category": "Cloud" },
+    { "name": "AWS Route 53", "icon": "aws.svg", "category": "Cloud" },
+    { "name": "AWS ALB", "icon": "aws.svg", "category": "Cloud" },
+    { "name": "AWS Secrets", "icon": "aws.svg", "category": "Cloud" },
+    { "name": "AWS CloudWatch", "icon": "aws.svg", "category": "Cloud" },
+
+    { "name": "Docker", "icon": "docker.svg", "category": "Tools" },
+    { "name": "Kubernetes", "icon": "kubernetes.svg", "category": "Tools" },
+    { "name": "Storybook", "icon": "storybook.svg", "category": "Tools" },
+    { "name": "Postman", "icon": "postman.svg", "category": "Tools" },
+    { "name": "Serilog", "icon": "serilog.svg", "category": "Tools" },
+    { "name": "Jira", "icon": "jira.svg", "category": "Tools" },
+    { "name": "Confluence", "icon": "confluence.svg", "category": "Tools" },
+
+    { "name": "Windows", "icon": "windows.svg", "category": "Operating Systems" },
+    { "name": "Linux Mint", "icon": "linuxmint.svg", "category": "Operating Systems" }
+  ]
+}
