@@ -11,14 +11,14 @@
 }
 
 body.dark-theme {
-    --background1: #121212;
-    --background2: #121212;
-    --background3: #121212;
-    --background4: #121212;
-    --background5: #121212;
+    --background1: #004c55;
+    --background2: #660067;
+    --background3: #605b00;
+    --background4: #5a0007;
+    --background5: #001d5e;
     --header-background: #3f3f3f;
-    --text-primary: #ffffff;
-    --border: #ffffff;
+    --text-primary: #b1b1b1;
+    --border: #b1b1b1;
 }
 
 /* Apply transitions to all elements */

@@ -52,6 +52,7 @@ const ContentBox = styled(Box)({
 
 const CenteredTypography = styled(Typography)({
   textAlign: "center",
+  color: "var(--text-primary)",
 });
 
 const JobTitleContainer = styled(Box)({
@@ -79,6 +80,7 @@ const TitleTypography = styled(Typography)({
   marginRight: "30px",
   display: "inline-block",
   whiteSpace: "nowrap",
+  color: "var(--text-primary)",
 });
 
 const AboutPage = () => {
