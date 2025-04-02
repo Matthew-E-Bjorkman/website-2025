@@ -70,7 +70,19 @@ const StyledToggleButton = styled(ToggleButton)({
 
 const DesktopHeader = () => {
   const { themeName, toggleTheme } = useAppThemes();
-  const [activeTab, setActiveTab] = useState("about");
+  let defaultTab = "about";
+  switch (window.location.pathname) {
+    case "/":
+      defaultTab = "about";
+      break;
+    case "/skills":
+      defaultTab = "skills";
+      break;
+    case "/projects":
+      defaultTab = "projects";
+      break;
+  }
+  const [activeTab, setActiveTab] = useState(defaultTab);
 
   const setPage = (pageName: string) => {
     setActiveTab(pageName);

@@ -4,11 +4,12 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid2"; // Using Grid2 as requested
 import VerticalStack from "./VerticalStack";
 import { Divider, styled, Typography } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import Stack from "@mui/material/Stack";
+import isMobileView from "./isMobileView.ts";
 
 export interface ProjectCardProps {
   project: Project;
@@ -18,8 +19,6 @@ const StyledCard = styled(Card)({
   backgroundColor: "var(--header-background)",
   borderRadius: "20px",
   border: "3px solid var(--border)",
-  width: "80%",
-  height: "80%",
 });
 
 const CardContentNoVerticalPadding = styled(CardContent)({
@@ -30,19 +29,14 @@ const CardContentNoVerticalPadding = styled(CardContent)({
 
 const TitleTypography = styled(Typography)({
   paddingTop: "20px",
-  marginBottom: "-20px",
   color: "var(--text-primary)",
-  textWrap: "nowrap",
 });
 
 const DescriptionTypography = styled(Typography)({
-  padding: "3% 8% 3% 8%",
-  marginLeft: "5%",
   border: "3px solid var(--border)",
   borderRadius: "25px",
   backgroundColor: "var(--background1)",
   color: "var(--text-primary)",
-  fontSize: "18px",
 });
 
 const CenteredStack = styled(Stack)({
@@ -59,18 +53,50 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     return <Card>No Project Data Provided</Card>;
   }
 
+  const isMobile = isMobileView();
+
   return (
-    <StyledCard variant="outlined">
-      <Grid container spacing={2} height="100%">
-        <Grid size={7}>
+    <StyledCard
+      variant="outlined"
+      sx={{
+        width: isMobile ? "90%" : "80%",
+        height: isMobile ? "auto" : "80%",
+        margin: isMobile ? "10px 0" : undefined, // Added margin only for mobile
+      }}
+    >
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          height: "100%",
+          flexDirection: isMobile ? "column" : "row",
+        }}
+      >
+        <Grid size={{ xs: isMobile ? 12 : 7 }}>
           <VerticalStack>
             <CardContentNoVerticalPadding>
-              <TitleTypography variant="h3">
+              <TitleTypography
+                variant={isMobile ? "h5" : "h3"}
+                sx={{
+                  textWrap: isMobile ? "wrap" : "nowrap",
+                  fontSize: isMobile ? "1.5rem" : undefined,
+                  paddingBottom: isMobile ? "5px" : undefined,
+                }}
+              >
                 {project.name} ({project.year})
               </TitleTypography>
             </CardContentNoVerticalPadding>
             <CardContentNoVerticalPadding>
-              <DescriptionTypography>
+              <DescriptionTypography
+                sx={{
+                  padding: isMobile ? "4% 4%" : "3% 8% 3% 8%",
+                  marginLeft: isMobile ? "1%" : "5%",
+                  marginRight: isMobile ? "1%" : "0",
+                  fontSize: isMobile ? "15px" : "18px",
+                  maxHeight: isMobile ? "120px" : "unset",
+                  overflow: isMobile ? "auto" : "visible",
+                }}
+              >
                 {project.description}
               </DescriptionTypography>
             </CardContentNoVerticalPadding>
@@ -79,52 +105,56 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
                 <Stack
                   direction="row"
                   divider={<Divider orientation="vertical" flexItem />}
-                  spacing={2}
+                  spacing={isMobile ? 1 : 2}
+                  sx={{
+                    flexWrap: isMobile ? "wrap" : "nowrap",
+                    justifyContent: "center",
+                    maxWidth: isMobile ? "100%" : "unset",
+                  }}
                 >
-                  {project.technologies.map((technology) => (
-                    <Typography fontSize="medium" color="var(--text-primary)">
-                      {technology + " "}
+                  {project.technologies.map((technology, index) => (
+                    <Typography
+                      key={index}
+                      variant="body1"
+                      color="var(--text-primary)"
+                      sx={{
+                        fontSize: isMobile ? "14px" : undefined,
+                        padding: isMobile ? "0 4px" : undefined,
+                      }}
+                    >
+                      {technology}
                     </Typography>
                   ))}
                 </Stack>
               </CardContent>
-              <CardActions>
-                <StyledGitHubIcon fontSize="large" />
-                {project.source_links.map((link) => (
-                  <Button
-                    key={link.url}
-                    variant="outlined"
-                    sx={{
-                      background: "var(--text-primary)",
-                      color: "var(--header-background)",
-                    }}
-                    onClick={() => window.open(link.url, "GitHubWindow")}
-                  >
-                    {link.name}
-                  </Button>
-                ))}
-              </CardActions>
             </CenteredStack>
+            <CardActions>
+              <StyledGitHubIcon fontSize="large" />
+              {project.source_links.map((link) => (
+                <Button
+                  key={link.url}
+                  variant="outlined"
+                  sx={{
+                    background: "var(--text-primary)",
+                    color: "var(--header-background)",
+                  }}
+                  onClick={() => window.open(link.url, "GitHubWindow")}
+                >
+                  {link.name}
+                </Button>
+              ))}
+            </CardActions>
           </VerticalStack>
         </Grid>
-        <Grid
-          size={5}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <Grid size={{ xs: isMobile ? 12 : 5 }}>
           <CardMedia
             component="img"
-            src={"/" + project.img_name}
-            alt={project.name + " image"}
+            image={`/${project.img_name}`}
+            alt={project.name}
             sx={{
-              textAlign: "center",
-              height: "70%",
-              width: "90%",
-              borderRadius: "25px",
-              border: "2px solid var(--border)",
+              height: isMobile ? "200px" : "100%", // Fixed height just for mobile
+              objectFit: "cover",
+              borderRadius: "10px",
             }}
           />
         </Grid>

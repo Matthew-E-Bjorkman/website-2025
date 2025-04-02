@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import { Box, keyframes, styled, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { useMemo } from "react";
+import isMobileView from "./isMobileView";
 
 const ContainerCard = styled(Card)({
   width: "80%",
@@ -42,7 +43,7 @@ const ContentBox = styled(Box)({
   borderRadius: "25px",
   backgroundColor: "var(--header-background)",
   width: "80%",
-  height: "50%",
+  height: isMobileView() ? "42%" : "50%",
   padding: "10px",
   marginTop: "70px !important",
   display: "grid",
@@ -106,14 +107,20 @@ const AboutPage = () => {
               <CenteredTypography variant="h4">My name is</CenteredTypography>
             </HeaderBox>
             <ContentBox>
-              <CenteredTypography variant="h1">
+              <CenteredTypography
+                variant={isMobileView() ? "h3" : "h1"}
+                sx={{ marginBottom: "10px" }}
+              >
                 Matthew Bjorkman
               </CenteredTypography>
               <JobTitleContainer>
                 <ScrollingContainer>
                   {/* Double the titles so it loops into itself */}
                   {[...titles, ...titles].map((title, index) => (
-                    <TitleTypography key={index} variant="h4">
+                    <TitleTypography
+                      key={index}
+                      variant={isMobileView() ? "h5" : "h4"}
+                    >
                       {title}
                     </TitleTypography>
                   ))}

@@ -7,13 +7,18 @@ interface MobileLayoutProps {
 }
 
 const PageContainer = styled("div")({
-  height: "100vh",
+  height: "calc(100vh - 60px)",
+});
+
+const HeaderMargin = styled("div")({
+  height: "60px",
 });
 
 const MobileLayout = ({ children }: MobileLayoutProps) => {
   return (
     <PageContainer>
       <MobileHeader />
+      <HeaderMargin />
       {children}
     </PageContainer>
   );

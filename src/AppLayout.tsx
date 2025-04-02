@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import DesktopLayout from "./DesktopLayout";
 import MobileLayout from "./MobileLayout";
+import isMobileView from "./isMobileView.ts";
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,11 +11,7 @@ const AppLayout = ({ children }: LayoutProps) => {
   const [isMobileSize, setIsMobileSize] = useState(false);
 
   function handleResize() {
-    if (window.innerWidth > 768) {
-      setIsMobileSize(false);
-    } else {
-      setIsMobileSize(true);
-    }
+    setIsMobileSize(isMobileView());
   }
 
   useEffect(() => {
